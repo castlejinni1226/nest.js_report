@@ -12,4 +12,7 @@ export declare class UserService {
     }>;
     signin(signinUserDto: SigninUserDto, res: any): Promise<any>;
     findByEmail(email: string): Promise<User>;
+    buyTicket(user: User, showPrice: number): Promise<import("typeorm").UpdateResult | {
+        message: string;
+    }>;
 }

@@ -14,6 +14,8 @@ const jwt_1 = require("@nestjs/jwt");
 const ticket_entity_1 = require("./entities/ticket.entity");
 const ticket_controller_1 = require("./ticket.controller");
 const ticket_service_1 = require("./ticket.service");
+const show_module_1 = require("../show/show.module");
+const user_module_1 = require("../user/user.module");
 let TicketModule = class TicketModule {
 };
 exports.TicketModule = TicketModule;
@@ -27,6 +29,8 @@ exports.TicketModule = TicketModule = __decorate([
                 }),
                 inject: [config_1.ConfigService],
             }),
+            show_module_1.ShowModule,
+            user_module_1.UserModule
         ],
         controllers: [ticket_controller_1.TicketController],
         providers: [ticket_service_1.TicketService],

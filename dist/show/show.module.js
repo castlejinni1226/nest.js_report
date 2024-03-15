@@ -12,6 +12,7 @@ const show_service_1 = require("./show.service");
 const show_controller_1 = require("./show.controller");
 const show_entity_1 = require("./entities/show.entity");
 const typeorm_1 = require("@nestjs/typeorm");
+const hall_module_1 = require("../hall/hall.module");
 let ShowModule = class ShowModule {
 };
 exports.ShowModule = ShowModule;
@@ -19,7 +20,8 @@ exports.ShowModule = ShowModule = __decorate([
     (0, common_1.Module)({
         controllers: [show_controller_1.ShowController],
         providers: [show_service_1.ShowService],
-        imports: [typeorm_1.TypeOrmModule.forFeature([show_entity_1.Show])]
+        imports: [typeorm_1.TypeOrmModule.forFeature([show_entity_1.Show]), hall_module_1.HallModule],
+        exports: [show_service_1.ShowService]
     })
 ], ShowModule);
 //# sourceMappingURL=show.module.js.map

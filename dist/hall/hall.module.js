@@ -30,7 +30,7 @@ exports.HallModule = HallModule = __decorate([
         ],
         controllers: [hall_controller_1.HallController],
         providers: [hall_service_1.HallService],
-        exports: [typeorm_1.TypeOrmModule.forFeature([hall_entity_1.Hall])]
+        exports: [typeorm_1.TypeOrmModule.forFeature([hall_entity_1.Hall]), hall_service_1.HallService]
     })
 ], HallModule);
 //# sourceMappingURL=hall.module.js.map

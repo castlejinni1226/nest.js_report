@@ -87,6 +87,18 @@ let UserService = class UserService {
     async findByEmail(email) {
         return await this.userRepository.findOneBy({ email });
     }
+    async buyTicket(user, showPrice) {
+        try {
+            const newPoint = user.point - showPrice;
+            if (newPoint < 0) {
+                throw new Error("현재 포인트 잔액이 부족합니다.");
+            }
+            return await this.userRepository.update({ userId: user.userId }, { point: newPoint });
+        }
+        catch (error) {
+            return { message: `${error}` };
+        }
+    }
 };
 exports.UserService = UserService;
 exports.UserService = UserService = __decorate([

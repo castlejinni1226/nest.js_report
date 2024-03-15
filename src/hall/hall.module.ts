@@ -19,6 +19,6 @@ import { JwtModule } from '@nestjs/jwt';
   ],
   controllers: [HallController],
   providers: [HallService],
-  exports: [TypeOrmModule.forFeature([Hall])]
+  exports: [TypeOrmModule.forFeature([Hall]), HallService]
 })
 export class HallModule {}

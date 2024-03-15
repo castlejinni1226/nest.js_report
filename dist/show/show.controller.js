@@ -16,22 +16,45 @@ exports.ShowController = void 0;
 const common_1 = require("@nestjs/common");
 const show_service_1 = require("./show.service");
 const create_show_dto_1 = require("./dto/create-show.dto");
+const passport_1 = require("@nestjs/passport");
+const class_validator_1 = require("class-validator");
 let ShowController = class ShowController {
     constructor(showService) {
         this.showService = showService;
     }
-    createShow(createShowDto) {
-        return this.showService.createShow(createShowDto);
+    async createShow(createShowDto) {
+        (0, class_validator_1.validate)(createShowDto);
+        return await this.showService.createShow(createShowDto);
+    }
+    async findAllShow() {
+        return await this.showService.findAllshow();
+    }
+    async findShowById(showId) {
+        return await this.showService.findShowById(showId);
     }
 };
 exports.ShowController = ShowController;
 __decorate([
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('admin')),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [create_show_dto_1.CreateShowDto]),
-    __metadata("design:returntype", void 0)
+    __metadata("design:returntype", Promise)
 ], ShowController.prototype, "createShow", null);
+__decorate([
+    (0, common_1.Get)(),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], ShowController.prototype, "findAllShow", null);
+__decorate([
+    (0, common_1.Get)(":showId"),
+    __param(0, (0, common_1.Param)("shodId")),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], ShowController.prototype, "findShowById", null);
 exports.ShowController = ShowController = __decorate([
     (0, common_1.Controller)('show'),
     __metadata("design:paramtypes", [show_service_1.ShowService])

@@ -5,6 +5,7 @@ export declare class Hall {
     hallId: number;
     address: string;
     hallName: string;
+    seatCount: number;
     shows: Show[];
     seats: Seat[];
 }

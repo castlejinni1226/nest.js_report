@@ -35,6 +35,11 @@ __decorate([
     __metadata("design:type", String)
 ], Hall.prototype, "hallName", void 0);
 __decorate([
+    (0, class_validator_1.IsNumber)(),
+    (0, typeorm_1.Column)('int', { nullable: false }),
+    __metadata("design:type", Number)
+], Hall.prototype, "seatCount", void 0);
+__decorate([
     (0, typeorm_1.OneToMany)(() => show_entity_1.Show, (show) => show.hall),
     __metadata("design:type", Array)
 ], Hall.prototype, "shows", void 0);

@@ -70,4 +70,17 @@ export class UserService {
     return await this.userRepository.findOneBy({ email });
   }
 
+  async buyTicket(user: User, showPrice: number) {
+    try {
+      const newPoint = user.point - showPrice;
+      if (newPoint < 0) {
+        throw new Error("현재 포인트 잔액이 부족합니다.");
+      }
+
+      return await this.userRepository.update({userId: user.userId}, {point: newPoint});
+    } catch (error) {
+      return { message: `${error}` };
+    }
+  }
+
 }

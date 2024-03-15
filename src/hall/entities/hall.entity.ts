@@ -1,4 +1,4 @@
-import { IsString } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 import { Seat } from 'src/seat/entities/seat.entity';
 import { Show } from 'src/show/entities/show.entity';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
@@ -18,6 +18,10 @@ export class Hall {
     @IsString()
     @Column('varchar', { nullable: false })
     hallName: string;
+
+    @IsNumber()
+    @Column('int', { nullable: false })
+    seatCount: number;
 
     @OneToMany(() => Show, (show) => show.hall)
     shows: Show[];
